@@ -37,14 +37,12 @@ Each row represents a directed edge. Key columns:
 ## 3. How to Import (Neo4j)
 Example Cypher queries to load the data into Neo4j:
 
-**Load Entities:**
+**Load Entities and Relationships:**
 ```cypher
 LOAD CSV WITH HEADERS FROM 'file:///entities_neo4j.csv' AS row
 MERGE (n:Entity {id: row.[entity_text]})
 SET n.name = row.[your_type]
 
-**Load Relationships:**
-```cypher
 LOAD CSV WITH HEADERS FROM 'file:///relationships_neo4j.csv' AS row
 MATCH (a:Entity {id: row.[head_standard_id]})
 MATCH (b:Entity {id: row.[tail_standard_id]})
